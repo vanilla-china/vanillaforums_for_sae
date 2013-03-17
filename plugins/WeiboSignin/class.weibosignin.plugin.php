@@ -150,7 +150,7 @@ class WeiboSignInPlugin extends Gdn_Plugin {
 	}
 
 	private function get($url, $arr){
-		return file_get_contents(build_url($url, $arr));
+		return file_get_contents($this->build_url($url, $arr));
 	}
 
 	private function build_url($url, $arr){
@@ -178,5 +178,12 @@ class WeiboSignInPlugin extends Gdn_Plugin {
 	public function IsConfigured() {
 		$Result = C('Plugins.WeiboSignin.AppKey') && C('Plugins.WeiboSignin.AppSecret');
 		return $Result;
+	}
+
+	public function Setup() {
+		// Make sure the user has curl.
+		if (!function_exists('curl_exec')) {
+			throw new Gdn_UserException('This plugin requires curl.');
+		}
 	}
 }
