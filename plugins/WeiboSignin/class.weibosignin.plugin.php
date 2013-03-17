@@ -77,7 +77,10 @@ class WeiboSignInPlugin extends Gdn_Plugin {
 		$access_token = GetValue('access_token', $Response);
 		$uid = GetValue('uid', $Response);
 
-		$Response = json_decode(file_get_contents('https://api.weibo.com/2/users/show.json?uid='. $uid . '&access_token=' . $access_token), true);
+		$Response = $this->GetAndJsondecode('https://api.weibo.com/2/users/show.json', array(
+			'uid' => $uid,
+			'access_token' => $access_token
+		));
 
 		if($uid <= 0){
 			$Sender->Form->AddError('Auth Failed');

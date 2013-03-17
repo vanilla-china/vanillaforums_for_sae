@@ -69,7 +69,7 @@ echo $this->Form->Errors();
    </div>
    <div class="ConfigurationHelp">
       <strong>获取AppKey和AppSecret的方式</strong>
-      <p>将你的网站在<a href="http://open.weibo.com/connect">http://open.weibo.com/connect</a>注册</p>
+      <p>将你的网站在<a href="http://open.weibo.com/connect" target="_blank">http://open.weibo.com/connect</a>注册</p>
       <p>获取到AppKey和AppSecret后点击保存</p>
       <p>授权回调页请填写：<?php echo Url('/entry/connect/weibosignin', TRUE)?></p>
    </div>
